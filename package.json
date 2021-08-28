@@ -19,6 +19,7 @@
     "keywords": [
         "node",
         "mongoose",
+        "mongodb",
         "express"
     ],
     "license": "MIT",
