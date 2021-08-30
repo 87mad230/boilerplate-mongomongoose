@@ -2,8 +2,11 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://test:test@cluster0.nxd1a.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 
-let personSchema = mongoose.Schema({
-  name: String,
+let personSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
   age: Number,
   favoriteFoods: Array
 });
@@ -11,6 +14,8 @@ let personSchema = mongoose.Schema({
 let Person = mongoose.model('Person',personSchema);
 
 const createAndSavePerson = (done) => {
+  let document = new Person({name:"carlos", age:32, favoriteFoods:['nothing']});
+  document.save();
   done(null /*, data*/);
 };
 
