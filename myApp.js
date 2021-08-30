@@ -21,10 +21,12 @@ const createAndSavePerson = (done) => {
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
-  let documents = Person.create(arrayOfPeople);
-  documents.save(function(err,data) {
-    done(null, data);
-  })
+  Person.create(arrayOfPeople, function(err,instance) {
+    instance.save(function(err,data) {
+      done(null,data);
+    })
+  });
+  
   
 };
 
