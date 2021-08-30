@@ -21,17 +21,15 @@ const createAndSavePerson = (done) => {
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
-  Person.create(arrayOfPeople, function(err,instance) {
-    instance.save(function(err,data) {
-      done(null,data);
-    })
-  });
-  
-  
+  Person.create(arrayOfPeople, function(err,data) {
+      if (err) console.log(err);
+      done(null, data);
+  })
 };
 
 const findPeopleByName = (personName, done) => {
-  done(null /*, data*/);
+  let data = Person.find({name: personName});
+  done(null , data);
 };
 
 const findOneByFood = (food, done) => {
